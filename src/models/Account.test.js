@@ -1,7 +1,9 @@
 import { Account } from "./Account";
 import { applySnapshot } from "mobx-state-tree";
 
-const initialAccount = Account.create();
+const initialAccount = Account.create({
+  name: "Inter"
+});
 
 it("can create an account", () => {
   const account = initialAccount;
@@ -29,6 +31,7 @@ it("can get account balance", () => {
   const account = initialAccount;
 
   const snapshot = {
+    name: "Inter",
     transactions: [
       {
         type: "d",

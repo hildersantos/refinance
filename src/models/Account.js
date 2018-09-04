@@ -4,6 +4,7 @@ import { Transaction } from "./Transaction";
 
 export const Account = types
   .model({
+    name: types.string,
     transactions: types.optional(types.array(Transaction), [])
   })
   .views(self => ({
