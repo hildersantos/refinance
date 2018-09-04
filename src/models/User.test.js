@@ -7,9 +7,12 @@ it("can create an user", () => {
 });
 
 it("can create an account", () => {
-  const account = user.createAccount({
+  const account = {
     name: "Bradesco",
     initialBalance: 150000,
     id: "a1"
-  });
+  };
+  user.createAccount(account);
+
+  expect(user.accounts.get(account.id).name).toBe("Bradesco");
 });
