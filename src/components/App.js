@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Menu, Grid, Container, Table } from "semantic-ui-react";
+import TransactionView from "./TransactionView";
 
 class App extends Component {
   render() {
@@ -22,11 +23,7 @@ class App extends Component {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                  <Table.Row>
-                    <Table.Cell>R</Table.Cell>
-                    <Table.Cell>A Description</Table.Cell>
-                    <Table.Cell>R$ 15,00</Table.Cell>
-                  </Table.Row>
+                  <TransactionView />
                 </Table.Body>
               </Table>
             </Grid.Column>

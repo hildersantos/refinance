@@ -2,14 +2,18 @@
 
 exports[`can create a transaction into an account 1`] = `
 Object {
+  "id": "a1",
+  "initialBalance": 0,
   "name": "Inter",
-  "transactions": Array [
-    Object {
+  "transactions": Object {
+    "t1": Object {
       "date": 1482363367071,
       "description": "Despesa",
+      "id": "t1",
+      "isPaid": false,
       "type": "d",
       "value": 1000,
     },
-  ],
+  },
 }
 `;

@@ -2,10 +2,12 @@ import { Transaction } from "./Transaction";
 
 Date.now = jest.fn(() => 1482363367071); // Mock Date
 const initialTransaction = Transaction.create({
+  id: "t1",
   value: 1900,
   description: "Test",
   type: "r",
-  date: Date.now()
+  date: Date.now(),
+  isPaid: true
 });
 
 it("can create a transaction", () => {

@@ -4,8 +4,10 @@ import { Transaction } from "./Transaction";
 
 export const Account = types
   .model({
+    id: types.identifier,
     name: types.string,
-    transactions: types.optional(types.array(Transaction), [])
+    initialBalance: 0,
+    transactions: types.optional(types.map(Transaction), {})
   })
   .views(self => ({
     get balance() {
@@ -17,6 +19,6 @@ export const Account = types
   }))
   .actions(self => ({
     createTransaction: transaction => {
-      self.transactions.push(transaction);
+      self.transactions.set(transaction.id, transaction);
     }
   }));
