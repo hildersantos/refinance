@@ -12,5 +12,8 @@ export const Transaction = types
     },
     changeDescription: newDescription => {
       self.description = newDescription;
+    },
+    changeType: newType => {
+      self.type = newType;
     }
   }));

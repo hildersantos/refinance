@@ -29,3 +29,10 @@ it("can change transaction description", () => {
   transaction.changeDescription("New");
   expect(transaction.description).toBe("New");
 });
+
+it("can change transaction type", () => {
+  const transaction = initialTransaction;
+
+  transaction.changeType("d");
+  expect(transaction.type).toBe("d");
+});
