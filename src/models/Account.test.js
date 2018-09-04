@@ -1,4 +1,5 @@
 import { Account } from "./Account";
+import { applySnapshot } from "mobx-state-tree";
 
 const initialAccount = Account.create();
 
@@ -22,4 +23,27 @@ it("can create a transaction into an account", () => {
     value: 1000,
     description: "Despesa"
   });
+});
+
+it("can get account balance", () => {
+  const account = initialAccount;
+
+  const snapshot = {
+    transactions: [
+      {
+        type: "d",
+        value: 1000,
+        description: "Despesa"
+      },
+      {
+        type: "r",
+        value: 3000,
+        description: "Receita"
+      }
+    ]
+  };
+
+  applySnapshot(account, snapshot);
+
+  expect(account.balance).toBe(2000);
 });
