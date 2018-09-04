@@ -2,7 +2,8 @@ import { Transaction } from "./Transaction";
 
 const initialTransaction = Transaction.create({
   value: 1900,
-  description: "Test"
+  description: "Test",
+  type: "r"
 });
 
 it("can create a transaction", () => {
