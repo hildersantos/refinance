@@ -4,7 +4,8 @@ export const Transaction = types
   .model({
     value: 0,
     description: "",
-    type: types.enumeration(["d", "r"])
+    type: types.enumeration(["d", "r"]),
+    date: types.Date
   })
   .actions(self => ({
     changeValue: newValue => {
