@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`can create a transaction into an account 1`] = `
+Object {
+  "name": "Inter",
+  "transactions": Array [
+    Object {
+      "date": 1482363367071,
+      "description": "Despesa",
+      "type": "d",
+      "value": 1000,
+    },
+  ],
+}
+`;

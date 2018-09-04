@@ -1,5 +1,5 @@
 import { Account } from "./Account";
-import { applySnapshot } from "mobx-state-tree";
+import { applySnapshot, getSnapshot } from "mobx-state-tree";
 
 const initialAccount = Account.create({
   name: "Inter"
@@ -22,12 +22,7 @@ it("can create a transaction into an account", () => {
     date: Date.now()
   });
 
-  expect(account.transactions[0].toJSON()).toEqual({
-    type: "d",
-    value: 1000,
-    description: "Despesa",
-    date: Date.now()
-  });
+  expect(getSnapshot(account)).toMatchSnapshot();
 });
 
 it("can get account balance", () => {
