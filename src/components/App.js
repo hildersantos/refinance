@@ -4,6 +4,7 @@ import TransactionView from "./TransactionView";
 
 class App extends Component {
   render() {
+    const { user } = this.props;
     return (
       <React.Fragment>
         <Menu fixed="top" color="black" inverted>

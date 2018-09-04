@@ -19,6 +19,9 @@ export const Account = types
   }))
   .actions(self => ({
     createTransaction: transaction => {
-      self.transactions.set(transaction.id, transaction);
+      self.transactions.set(transaction.id, {
+        ...transaction,
+        account: self.id
+      });
     }
   }));

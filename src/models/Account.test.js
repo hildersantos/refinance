@@ -40,14 +40,16 @@ it("can get account balance", () => {
         type: "d",
         value: 1000,
         description: "Despesa",
-        date: Date.now()
+        date: Date.now(),
+        account: "a1"
       },
       t2: {
         id: "t2",
         type: "r",
         value: 3000,
         description: "Receita",
-        date: Date.now()
+        date: Date.now(),
+        account: "a1"
       }
     }
   };
