@@ -46,7 +46,7 @@ class App extends Component {
                   <Table.Row>
                     <Table.HeaderCell>Account</Table.HeaderCell>
                     <Table.HeaderCell>Description</Table.HeaderCell>
-                    <Table.HeaderCell>Value</Table.HeaderCell>
+                    <Table.HeaderCell textAlign="right">Value</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
