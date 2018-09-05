@@ -1,12 +1,17 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { Table } from "semantic-ui-react";
+import { Table, Label } from "semantic-ui-react";
+import Money from "./Money";
 
-const TransactionView = () => (
+const TransactionView = ({ transaction }) => (
   <Table.Row>
-    <Table.Cell>R</Table.Cell>
-    <Table.Cell>A Description</Table.Cell>
-    <Table.Cell>R$ 15,00</Table.Cell>
+    <Table.Cell>{transaction.account.name}</Table.Cell>
+    <Table.Cell>{transaction.description}</Table.Cell>
+    <Table.Cell>
+      <Label color={transaction.type === "d" ? "red" : "green"}>
+        <Money value={transaction.value} />
+      </Label>
+    </Table.Cell>
   </Table.Row>
 );
 

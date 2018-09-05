@@ -17,22 +17,32 @@ const user = User.create({
       transactions: {
         t1: {
           id: "t1",
-          name: "Bolo de Cenoura",
+          description: "Bolo de Cenoura",
           value: 1000,
           date: new Date("2018-09-04"),
-          type: "d"
+          type: "d",
+          account: "a1"
         },
         t2: {
           id: "t2",
-          name: "Pagamento de Serviço",
+          description: "Pagamento de Serviço",
           value: 100000,
           date: new Date("2018-09-02"),
           type: "d",
-          isPaid: true
+          isPaid: true,
+          account: "a1"
         }
       }
+    },
+    a2: {
+      name: "Bradesco",
+      id: "a2",
+      transactions: {}
     }
   }
 });
 
-ReactDOM.render(<App user={user} />, document.getElementById("root"));
+const renderApp = () =>
+  ReactDOM.render(<App user={user} />, document.getElementById("root"));
+
+renderApp();
