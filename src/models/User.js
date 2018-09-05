@@ -25,7 +25,6 @@ export const User = types
   .views(self => ({
     get currentBalance() {
       return values(self.transactionRefs).reduce((sum, t) => {
-        if (t.type === "d") return sum - t.value;
         return sum + t.value;
       }, 0);
     }

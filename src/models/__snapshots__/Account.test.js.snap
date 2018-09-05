@@ -12,7 +12,7 @@ Object {
       "id": "t1",
       "isPaid": false,
       "type": "d",
-      "value": 1000,
+      "value": -1000,
     },
   ],
 }

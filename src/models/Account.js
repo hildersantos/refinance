@@ -12,13 +12,13 @@ export const Account = types
   .views(self => ({
     get balance() {
       return values(self.transactions).reduce((sum, t) => {
-        if (t.type === "d") return sum - t.value;
         return sum + t.value;
       }, 0);
     }
   }))
   .actions(self => ({
     createTransaction: newTransaction => {
+      // Checo se é uma despesa, em caso positivo, mudo o total...
       self.transactions.push(newTransaction);
       try {
         getParent(self, 2).addTransaction(newTransaction.id);

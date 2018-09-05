@@ -9,6 +9,10 @@ export const Transaction = types
     date: types.Date,
     isPaid: false
   })
+  .preProcessSnapshot(snapshot => ({
+    ...snapshot,
+    value: snapshot.type === "d" ? snapshot.value * -1 : snapshot.value * 1
+  }))
   .actions(self => ({
     changeValue: newValue => {
       self.value = newValue;
@@ -16,11 +20,11 @@ export const Transaction = types
     changeDescription: newDescription => {
       self.description = newDescription;
     },
-    changeType: newType => {
-      self.type = newType;
-    },
     changeAccount: newAccountId => {
       self.account = newAccountId;
+    },
+    changeType: newType => {
+      self.type = newType;
     }
   }))
   .views(self => ({
