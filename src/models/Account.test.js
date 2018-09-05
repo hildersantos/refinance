@@ -1,4 +1,5 @@
 import { Account } from "./Account";
+import { Transaction } from "./Transaction";
 import { applySnapshot, getSnapshot } from "mobx-state-tree";
 import { values } from "mobx";
 
@@ -34,8 +35,8 @@ it("can get account balance", () => {
   const snapshot = {
     name: "Inter",
     id: "a1",
-    transactions: {
-      t1: {
+    transactions: [
+      {
         id: "t1",
         type: "d",
         value: 1000,
@@ -43,7 +44,7 @@ it("can get account balance", () => {
         date: Date.now(),
         account: "a1"
       },
-      t2: {
+      {
         id: "t2",
         type: "r",
         value: 3000,
@@ -51,7 +52,7 @@ it("can get account balance", () => {
         date: Date.now(),
         account: "a1"
       }
-    }
+    ]
   };
 
   applySnapshot(account, snapshot);

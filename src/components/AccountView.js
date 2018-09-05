@@ -18,7 +18,11 @@ class AccountView extends Component {
       []
     );
     return (
-      <Select onChange={this.props.onSelectAccount} options={accountsOptions} />
+      <Select
+        placeholder="Selecione uma conta"
+        onChange={this.props.onSelectAccount}
+        options={accountsOptions}
+      />
     );
   }
 }

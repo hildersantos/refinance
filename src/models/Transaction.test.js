@@ -16,7 +16,7 @@ account.createTransaction({
   date: Date.now(),
   isPaid: true
 });
-const transaction = account.transactions.get("t1");
+const transaction = account.transactions[0];
 
 it("can create a transaction", () => {
   expect(transaction.value).toBe(1900);

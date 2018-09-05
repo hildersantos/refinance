@@ -1,5 +1,4 @@
-import { types } from "mobx-state-tree";
-import { Account } from "./Account";
+import { types, getParent } from "mobx-state-tree";
 
 export const Transaction = types
   .model({
@@ -8,8 +7,7 @@ export const Transaction = types
     description: "",
     type: types.enumeration(["d", "r"]),
     date: types.Date,
-    isPaid: false,
-    account: types.reference(types.late(() => Account))
+    isPaid: false
   })
   .actions(self => ({
     changeValue: newValue => {
@@ -23,5 +21,21 @@ export const Transaction = types
     },
     changeAccount: newAccountId => {
       self.account = newAccountId;
+    }
+  }))
+  .views(self => ({
+    get accountName() {
+      try {
+        return getParent(self, 2).name;
+      } catch (error) {
+        return;
+      }
+    },
+    get accountId() {
+      try {
+        return getParent(self, 2).id;
+      } catch (error) {
+        return;
+      }
     }
   }));

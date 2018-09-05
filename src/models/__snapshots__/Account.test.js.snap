@@ -5,9 +5,8 @@ Object {
   "id": "a1",
   "initialBalance": 0,
   "name": "Inter",
-  "transactions": Object {
-    "t1": Object {
-      "account": "a1",
+  "transactions": Array [
+    Object {
       "date": 1482363367071,
       "description": "Despesa",
       "id": "t1",
@@ -15,6 +14,6 @@ Object {
       "type": "d",
       "value": 1000,
     },
-  },
+  ],
 }
 `;

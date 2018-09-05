@@ -1,4 +1,4 @@
-import { types } from "mobx-state-tree";
+import { types, getParent } from "mobx-state-tree";
 import { values } from "mobx";
 import { Transaction } from "./Transaction";
 
@@ -7,7 +7,7 @@ export const Account = types
     id: types.identifier,
     name: types.string,
     initialBalance: 0,
-    transactions: types.optional(types.map(Transaction), {})
+    transactions: types.optional(types.array(Transaction), [])
   })
   .views(self => ({
     get balance() {
@@ -18,10 +18,12 @@ export const Account = types
     }
   }))
   .actions(self => ({
-    createTransaction: transaction => {
-      self.transactions.set(transaction.id, {
-        ...transaction,
-        account: self.id
-      });
+    createTransaction: newTransaction => {
+      self.transactions.push(newTransaction);
+      try {
+        getParent(self, 2).addTransaction(newTransaction.id);
+      } catch (error) {
+        return;
+      }
     }
   }));

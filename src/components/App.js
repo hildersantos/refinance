@@ -4,6 +4,7 @@ import TransactionView from "./TransactionView";
 import AccountView from "./AccountView";
 import { observer } from "mobx-react";
 import { values } from "mobx";
+import Money from "./Money";
 
 class App extends Component {
   state = {
@@ -39,7 +40,7 @@ class App extends Component {
                 <Table striped>
                   <Table.Header>
                     <Table.Row>
-                      <Table.HeaderCell>Type</Table.HeaderCell>
+                      <Table.HeaderCell>Account</Table.HeaderCell>
                       <Table.HeaderCell>Description</Table.HeaderCell>
                       <Table.HeaderCell>Value</Table.HeaderCell>
                     </Table.Row>
@@ -52,6 +53,13 @@ class App extends Component {
                       />
                     ))}
                   </Table.Body>
+                  <Table.Footer>
+                    <Table.Row>
+                      <Table.Cell colspan="3">
+                        Total: <Money value={account.balance} />
+                      </Table.Cell>
+                    </Table.Row>
+                  </Table.Footer>
                 </Table>
               </Grid.Column>
             </Grid.Row>
