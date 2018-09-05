@@ -5,7 +5,7 @@ import Money from "./Money";
 
 const TransactionView = ({ transaction }) => (
   <Table.Row>
-    <Table.Cell>{transaction.account.name}</Table.Cell>
+    <Table.Cell>{transaction.accountName}</Table.Cell>
     <Table.Cell>{transaction.description}</Table.Cell>
     <Table.Cell>
       <Label color={transaction.type === "d" ? "red" : "green"}>

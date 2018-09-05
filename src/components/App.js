@@ -55,7 +55,7 @@ class App extends Component {
                   </Table.Body>
                   <Table.Footer>
                     <Table.Row>
-                      <Table.Cell colspan="3">
+                      <Table.Cell colSpan="3">
                         Total: <Money value={account.balance} />
                       </Table.Cell>
                     </Table.Row>
