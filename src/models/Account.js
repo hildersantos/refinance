@@ -16,14 +16,18 @@ export const Account = types
       }, 0);
     }
   }))
-  .actions(self => ({
-    createTransaction: newTransaction => {
-      // Checo se é uma despesa, em caso positivo, mudo o total...
-      self.transactions.push(newTransaction);
-      try {
-        getParent(self, 2).addTransaction(newTransaction.id);
-      } catch (error) {
-        return;
+  .actions(self => {
+    let user;
+
+    return {
+      afterAttach: () => {
+        user = getParent(self, 2);
+      },
+      createTransaction: newTransaction => {
+        self.transactions.push(newTransaction);
+
+        // Existe um usuário? Se sim, add a transação no array dele
+        user && user.addTransaction(newTransaction.id);
       }
-    }
-  }));
+    };
+  });
