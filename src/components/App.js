@@ -11,6 +11,7 @@ class App extends Component {
     selectedAccount: null
   };
   onSelectAccount = (e, data) => {
+    // Check current balance
     this.setState({
       selectedAccount: data.value
     });
@@ -18,6 +19,10 @@ class App extends Component {
   render() {
     const { user } = this.props;
     const account = user.accounts.get(this.state.selectedAccount);
+    const transactions =
+      !account || account === "-1"
+        ? user.transactionRefs
+        : account.transactions;
     return (
       <React.Fragment>
         <Menu fixed="top" color="black" inverted>
@@ -34,36 +39,41 @@ class App extends Component {
               />
             </Grid.Column>
           </Grid.Row>
-          {account && (
-            <Grid.Row>
-              <Grid.Column>
-                <Table striped>
-                  <Table.Header>
-                    <Table.Row>
-                      <Table.HeaderCell>Account</Table.HeaderCell>
-                      <Table.HeaderCell>Description</Table.HeaderCell>
-                      <Table.HeaderCell>Value</Table.HeaderCell>
-                    </Table.Row>
-                  </Table.Header>
-                  <Table.Body>
-                    {values(account.transactions).map(transaction => (
-                      <TransactionView
-                        transaction={transaction}
-                        key={transaction.id}
+          <Grid.Row>
+            <Grid.Column>
+              <Table striped>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Account</Table.HeaderCell>
+                    <Table.HeaderCell>Description</Table.HeaderCell>
+                    <Table.HeaderCell>Value</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                  {values(transactions).map(transaction => (
+                    <TransactionView
+                      transaction={transaction}
+                      key={transaction.id}
+                    />
+                  ))}
+                </Table.Body>
+                <Table.Footer>
+                  <Table.Row>
+                    <Table.Cell colSpan="3">
+                      Total:{" "}
+                      <Money
+                        value={
+                          account && account.balance
+                            ? account.balance
+                            : user.currentBalance
+                        }
                       />
-                    ))}
-                  </Table.Body>
-                  <Table.Footer>
-                    <Table.Row>
-                      <Table.Cell colSpan="3">
-                        Total: <Money value={account.balance} />
-                      </Table.Cell>
-                    </Table.Row>
-                  </Table.Footer>
-                </Table>
-              </Grid.Column>
-            </Grid.Row>
-          )}
+                    </Table.Cell>
+                  </Table.Row>
+                </Table.Footer>
+              </Table>
+            </Grid.Column>
+          </Grid.Row>
         </Grid>
       </React.Fragment>
     );

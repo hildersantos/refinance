@@ -21,7 +21,10 @@ class AccountView extends Component {
       <Select
         placeholder="Selecione uma conta"
         onChange={this.props.onSelectAccount}
-        options={accountsOptions}
+        options={[
+          { text: "Todas", value: "-1", key: "-1" },
+          ...accountsOptions
+        ]}
       />
     );
   }
